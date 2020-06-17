@@ -35,7 +35,7 @@ public class Album {
     private Song findSong(String title){
         for (int i=0; i<this.listOfSongs.size(); i++) {
             Song song = this.listOfSongs.get(i);
-            if (song.getTitle().equals(title)) {
+            if (song.getTitle().contains(title)) {
                 return song;
             }
         }return null;
@@ -44,25 +44,29 @@ public class Album {
 
     public void addSongToAlbum(String title, double duration) {
         if (findSong(title) == null) {
-            Song song = new Song(title, duration);
-            this.listOfSongs.add(song);
+            this.listOfSongs.add(new Song(title, duration));
+            System.out.println("Song added to album");
         } else {
             System.out.println("This song is already in the album");
         }
     }
 
-    public void addSongToPlaylist(LinkedList<Song> playlist, String title) {
-            for (int i=0; i<listOfSongs.size(); i++) {
-                Song song = listOfSongs.get(i);
-                if (findSong(title) != null) {
-                    playlist.add(song);
-//                    playlist.add(song);
-                    System.out.println("song added");
-                }else {
-                    System.out.println("Song does not exist.");
-                }
-            }
 
+    //not working properly
+    public void addSongToPlaylist(LinkedList<Song> playlist, String title) {
+        Song song = findSong(title);
+        if (song != null) {
+            playlist.add(song);
+            System.out.println("Song added to playlist");
+        } else {
+            System.out.println("Song not found in the album");
+        }
+    }
+
+    public void printListOfSongs() {
+        for (int i=0; i<listOfSongs.size(); i++) {
+            System.out.println(listOfSongs.get(i).getTitle());
+        }
     }
 
 }
