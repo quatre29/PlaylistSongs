@@ -75,7 +75,7 @@ public class Main {
                     //not in current build
                     break;
                 case 4:
-                    //not in current build
+                    removeSong(songListIterator);
                     break;
                 case 5:
                     replay(songListIterator);
@@ -92,8 +92,8 @@ public class Main {
                 "0 - Quit menu\n" +
                 "1 - Next song\n" +
                 "2 - Previous song\n" +
-                "3 - Skip forward\n" +
-                "4 - Skip backwards\n" +
+                "3 - N/A\n" +
+                "4 - Remove song\n" +
                 "5 - Replay current song\n" +
                 "6 - List of songs in the playlist");
     }
@@ -122,9 +122,16 @@ public class Main {
     }
 
     public static void replay(ListIterator<Song> song) {
+
+        System.out.println("* " + song.previous().getTitle() + " is now replaying!");
         if (song.hasPrevious() || song.hasNext()) {
             song.next();
         }
-        System.out.println("* " + song.previous().getTitle() + " is now replaying!");
+    }
+
+    public static void removeSong(ListIterator<Song> song) {
+        song.previous();
+        System.out.println(song.next().getTitle() + " has been removed from the playlist!");
+        song.remove();
     }
 }
