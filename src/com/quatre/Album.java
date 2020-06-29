@@ -52,7 +52,6 @@ public class Album {
     }
 
 
-    //not working properly
     public void addSongToPlaylist(LinkedList<Song> playlist, String title) {
         Song song = findSong(title);
         if (song != null) {
