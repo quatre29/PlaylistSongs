@@ -42,7 +42,7 @@ public class Main {
         if (playList.isEmpty()) {
             System.out.println("There is no song added in the playlist");
         }else {
-            System.out.println("* " + songListIterator.next().getTitle() + " is now playing *");
+            System.out.println("* " + songListIterator.next().toString() + " is now playing *");
             System.out.println();
         }
         while (!quit) {
@@ -101,21 +101,21 @@ public class Main {
     public static void printPlayList(LinkedList<Song> songList) {
         Iterator<Song> songListIterator = songList.iterator();
         while (songListIterator.hasNext()) {
-            System.out.println(songListIterator.next().getTitle());
+            System.out.println(songListIterator.next().toString());
 
     }
 }
 
     public static void playNext(ListIterator<Song> song) {
         if (song.hasNext()) {
-            System.out.println("* " + song.next().getTitle() + " is now playing *");
+            System.out.println("* " + song.next().toString() + " is now playing *");
         } else {
             System.out.println("You've reached the end of the list!");
         }
     }
     public static void playPreview(ListIterator<Song> song) {
         if (song.hasPrevious()) {
-            System.out.println("* " + song.previous().getTitle() + " is now playing *");
+            System.out.println("* " + song.previous().toString() + " is now playing *");
         } else {
             System.out.println("You've reached the start of the list!");
         }
@@ -123,7 +123,7 @@ public class Main {
 
     public static void replay(ListIterator<Song> song) {
 
-        System.out.println("* " + song.previous().getTitle() + " is now replaying!");
+        System.out.println("* " + song.previous().toString() + " is now replaying!");
         if (song.hasPrevious() || song.hasNext()) {
             song.next();
         }
