@@ -131,7 +131,12 @@ public class Main {
 
     public static void removeSong(ListIterator<Song> song) {
         song.previous();
-        System.out.println(song.next().getTitle() + " has been removed from the playlist!");
+        System.out.println(song.next().toString() + " has been removed from the playlist!");
         song.remove();
+        if (song.hasNext()) {
+            System.out.println("*" + song.next().toString() + " is now playing *");
+        } else if (song.hasPrevious()) {
+            System.out.println("*" + song.previous().toString() + " is now playing *");
+        }
     }
 }

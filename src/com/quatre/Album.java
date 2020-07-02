@@ -32,13 +32,21 @@ public class Album {
     }
 
 
-    private Song findSong(String title){
-        for (int i=0; i<this.listOfSongs.size(); i++) {
-            Song song = this.listOfSongs.get(i);
-            if (song.getTitle().contains(title)) {
-                return song;
+//    private Song findSong(String title){
+//        for (int i=0; i<this.listOfSongs.size(); i++) {
+//            Song song = this.listOfSongs.get(i);
+//            if (song.getTitle().contains(title)) {
+//                return song;
+//            }
+//        }return null;
+//    }
+    private Song findSong(String title) {
+        for (Song checkSong: this.listOfSongs) {
+            if (checkSong.getTitle().equals(title)) {
+                return checkSong;
             }
-        }return null;
+        }
+        return null;
     }
 
 
